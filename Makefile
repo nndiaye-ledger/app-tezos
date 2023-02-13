@@ -46,7 +46,7 @@ endif
 
 ifeq ($(TARGET_NAME),TARGET_NANOS)
 ICONNAME=icons/nano-s-tezos.gif
-else ifeq ($(TARGET_NAME),TARGET_FATSTACKS)
+else ifeq ($(TARGET_NAME),TARGET_STAX)
 ICONNAME=icons/fat_tezos.gif
 else
 ICONNAME=icons/nano-x-tezos.gif
@@ -68,7 +68,7 @@ show-app:
 ############
 
 DEFINES   += OS_IO_SEPROXYHAL
-ifneq ($(TARGET_NAME),TARGET_FATSTACKS)
+ifneq ($(TARGET_NAME),TARGET_STAX)
 DEFINES += HAVE_BAGL HAVE_UX_FLOW
 else
 DEFINES += NBGL_QRCODE
@@ -86,7 +86,7 @@ DEFINES   += HAVE_BLE_APDU # basic ledger apdu transport over BLE
 
 SDK_SOURCE_PATH  += lib_blewbxx lib_blewbxx_impl
 
-else ifeq ($(TARGET_NAME),TARGET_FATSTACKS)
+else ifeq ($(TARGET_NAME),TARGET_STAX)
 DEFINES   += HAVE_BLE BLE_COMMAND_TIMEOUT_MS=2000
 DEFINES   += HAVE_BLE_APDU # basic ledger apdu transport over BLE
 
@@ -98,7 +98,7 @@ DEFINES   += IO_SEPROXYHAL_BUFFER_SIZE_B=128
 else
 DEFINES   += IO_SEPROXYHAL_BUFFER_SIZE_B=300
 DEFINES   += HAVE_GLO096
-ifneq ($(TARGET_NAME),TARGET_FATSTACKS)
+ifneq ($(TARGET_NAME),TARGET_STAX)
 DEFINES       += HAVE_BAGL BAGL_WIDTH=128 BAGL_HEIGHT=64
 endif
 DEFINES   += HAVE_BAGL_ELLIPSIS # long label truncation feature
@@ -168,7 +168,7 @@ include $(BOLOS_SDK)/Makefile.glyphs
 APP_SOURCE_PATH  += src
 SDK_SOURCE_PATH  += lib_stusb lib_stusb_impl
 
-ifeq ($(TARGET_NAME),TARGET_FATSTACKS)
+ifeq ($(TARGET_NAME),TARGET_STAX)
 SDK_SOURCE_PATH += lib_nbgl/src
 else
 SDK_SOURCE_PATH += lib_ux
