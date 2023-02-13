@@ -194,7 +194,7 @@ delete:
 include $(BOLOS_SDK)/Makefile.rules
 
 #add dependency on custom makefile filename
-dep/%.d: %.c Makefile
+$(DEP_DIR)/%.d: %.c Makefile
 
 listvariants:
 	@echo VARIANTS APP tezos_wallet tezos_baking
@@ -202,4 +202,4 @@ listvariants:
 # Generate delegates from baker list
 src/delegates.h: tools/gen-delegates.sh tools/BakersRegistryCoreUnfilteredData.json
 	bash ./tools/gen-delegates.sh ./tools/BakersRegistryCoreUnfilteredData.json
-dep/to_string.d: src/delegates.h
+$(DEP_DIR)/to_string.d: src/delegates.h
